@@ -7,7 +7,7 @@ export default function Navbar() {
   const { data: session } = useSession();
 
   return (
-    <nav className="flex justify-between items-center px-6 py-4 bg-white shadow">
+    <nav className="flex justify-between items-center px-6 py-4 bg-white shadow-xl">
       {/* Logo */}
       <Link href="/" className="text-2xl font-bold text-blue-600">
         MyShop
