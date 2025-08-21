@@ -15,12 +15,15 @@ export default function Navbar() {
 
       {/* Nav Links */}
       <div className="flex gap-6">
+        <Link href="/" className="hover:text-blue-500">
+          Home
+        </Link>
         <Link href="/products" className="hover:text-blue-500">
           Products
         </Link>
         {session && (
           <Link href="/dashboard/add-product" className="hover:text-blue-500">
-            Dashboard
+            Add Product
           </Link>
         )}
       </div>
