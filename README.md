@@ -1,36 +1,67 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# NextJS Shop 🛒
 
-## Getting Started
+A simple e-commerce shop built with **Next.js, NextAuth.js, DaisyUI, and TailwindCSS**.  
+This project demonstrates authentication, product management (via JSON file storage), theming (light/dark), and responsive UI.
 
-First, run the development server:
+---
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## 🚀 Features
+- 🔑 Authentication using **NextAuth.js**
+- 🌓 Light/Dark theme toggle with DaisyUI
+- 📦 Add and view products (stored in `products.json`)
+- 🖼️ Responsive UI with **TailwindCSS + DaisyUI**
+- 🔔 Toast notifications with **react-hot-toast**
+- 👤 User dashboard with protected routes
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+---
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+## 🛠️ Setup & Installation
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+1. **Clone the repository**
+   ```bash
+   git clone https://github.com/a1shuvo/nextjs-shop.git
+   cd nextjs-shop
+   ```
 
-## Learn More
+2. **Install dependencies**
+   ```bash
+   npm install
+   ```
 
-To learn more about Next.js, take a look at the following resources:
+3. **Environment Variables**
+   Create a `.env.local` file in the root and configure:
+   ```env
+   AUTH_SECRET=your_secret_key
+   NEXTAUTH_URL=http://localhost:3000
+   GOOGLE_CLIENT_ID=your_google_client_id
+   GOOGLE_CLIENT_SECRET=your_google_client_secret
+   ```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+4. **Run the development server**
+   ```bash
+   npm run dev
+   ```
+   App will be available at [http://localhost:3000](http://localhost:3000).
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+---
 
-## Deploy on Vercel
+## 🗂️ Route Summary
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+| Route                     | Description                               | Auth Required |
+|----------------------------|-------------------------------------------|---------------|
+| `/`                       | Homepage with welcome message             | ❌ No |
+| `/products`               | Displays all available products           | ❌ No |
+| `/dashboard/add-product`  | Add new product (form)                     | ✅ Yes |
+| `/api/products`           | API endpoint to manage products (CRUD)    | ✅ Yes |
+| `/api/auth/[...nextauth]` | NextAuth.js authentication API            | ❌ No |
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+---
+
+## 📌 Tech Stack
+- [Next.js 14](https://nextjs.org/)
+- [NextAuth.js](https://next-auth.js.org/)
+- [TailwindCSS](https://tailwindcss.com/)
+- [DaisyUI](https://daisyui.com/)
+- [React Hot Toast](https://react-hot-toast.com/)
+- JSON file as a database
+

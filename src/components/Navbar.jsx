@@ -7,60 +7,64 @@ import ThemeToggle from "./ThemeToggle";
 export default function Navbar() {
   const { data: session } = useSession();
 
+  const navLinks = (
+    <>
+      <li>
+        <Link href="/" className="hover:text-primary">
+          Home
+        </Link>
+      </li>
+      <li>
+        <Link href="/products" className="hover:text-primary">
+          Products
+        </Link>
+      </li>
+      {session && (
+        <li>
+          <Link href="/dashboard/add-product" className="hover:text-primary">
+            Add Product
+          </Link>
+        </li>
+      )}
+    </>
+  );
+
   return (
     <div className="sticky top-0 z-50 bg-base-100 shadow-md">
-      <div className="navbar max-w-7xl mx-auto px-6">
+      <div className="navbar max-w-7xl mx-auto px-4 md:px-6">
         {/* Left: Logo */}
         <div className="navbar-start">
-          <Link href="/" className="text-2xl font-bold text-blue-600">
+          <Link href="/" className="text-2xl font-bold text-primary">
             MyShop
           </Link>
         </div>
 
-        {/* Center: Nav Links (desktop) */}
+        {/* Center: Desktop Nav */}
         <div className="navbar-center hidden lg:flex">
-          <ul className="menu menu-horizontal px-1 gap-4">
-            <li>
-              <Link href="/" className="hover:text-blue-600">
-                Home
-              </Link>
-            </li>
-            <li>
-              <Link href="/products" className="hover:text-blue-600">
-                Products
-              </Link>
-            </li>
-            {session && (
-              <li>
-                <Link
-                  href="/dashboard/add-product"
-                  className="hover:text-blue-600"
-                >
-                  Add Product
-                </Link>
-              </li>
-            )}
+          <ul className="menu menu-horizontal gap-6 px-1 font-medium">
+            {navLinks}
           </ul>
         </div>
 
-        {/* Right: Auth / User Avatar */}
+        {/* Right: Auth / Theme */}
         <div className="navbar-end flex items-center gap-2">
           <ThemeToggle />
+
           {session ? (
             <div className="dropdown dropdown-end">
               <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
-                <div className="w-10 rounded-full">
+                <div className="w-10 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
                   <img src={session.user.image} alt={session.user.name} />
                 </div>
               </label>
               <ul
                 tabIndex={0}
-                className="dropdown-content mt-3 p-2 shadow menu menu-compact bg-base-100 rounded-box w-52"
+                className="menu menu-sm dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-fit"
               >
                 <li>
                   <button
                     onClick={() => signOut()}
-                    className="text-red-500 hover:bg-gray-100 rounded-lg w-full text-left"
+                    className="text-red-500 hover:bg-red-100 rounded-lg"
                   >
                     Logout
                   </button>
@@ -76,9 +80,9 @@ export default function Navbar() {
             </button>
           )}
 
-          {/* Mobile Menu */}
-          <div className="lg:hidden dropdown">
-            <label tabIndex={0} className="btn btn-ghost btn-circle ml-2">
+          {/* Mobile Hamburger */}
+          <div className="lg:hidden dropdown dropdown-end">
+            <label tabIndex={0} className="btn btn-ghost btn-circle">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 className="h-6 w-6"
@@ -94,41 +98,29 @@ export default function Navbar() {
                 />
               </svg>
             </label>
-            <ul
+            <div
               tabIndex={0}
-              className="menu menu-compact dropdown-content mt-3 p-2 shadow rounded-box w-52"
+              className="menu dropdown-content mt-3 p-4 shadow bg-base-100 rounded-box w-fit right-0"
             >
-              <li>
-                <Link href="/">Home</Link>
-              </li>
-              <li>
-                <Link href="/products">Products</Link>
-              </li>
-              {session && (
-                <li>
-                  <Link href="/dashboard/add-product">Add Product</Link>
-                </li>
-              )}
-              {session ? (
-                <li>
+              {navLinks}
+              <div className="mt-2 border-t pt-2">
+                {session ? (
                   <button
                     onClick={() => signOut()}
-                    className="text-red-500 hover:bg-gray-100 rounded-lg w-full text-left"
+                    className="text-red-500 hover:bg-red-100 rounded-lg"
                   >
                     Logout
                   </button>
-                </li>
-              ) : (
-                <li>
+                ) : (
                   <button
                     onClick={() => signIn()}
-                    className="btn btn-primary btn-sm rounded-full w-full text-left"
+                    className="btn btn-sm btn-primary rounded-full"
                   >
                     Login
                   </button>
-                </li>
-              )}
-            </ul>
+                )}
+              </div>
+            </div>
           </div>
         </div>
       </div>
