@@ -22,8 +22,8 @@ export default function ProductDetailPage({ params }) {
   }
 
   return (
-    <div className="min-h-screen bg-gray-50 flex flex-col items-center py-12 px-4">
-      <div className="max-w-6xl w-full bg-white rounded-xl shadow-lg overflow-hidden flex flex-col md:flex-row md:gap-8">
+    <div className="min-h-screen bg-base-100 flex flex-col items-center py-12 px-4">
+      <div className="max-w-6xl w-full bg-base-200 rounded-xl shadow-lg overflow-hidden flex flex-col md:flex-row md:gap-8">
         {/* Image Section */}
         {product.image ? (
           <div className="md:w-1/2 relative overflow-hidden">

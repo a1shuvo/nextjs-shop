@@ -4,8 +4,8 @@ import { signIn } from "next-auth/react";
 
 export default function LoginPage() {
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-blue-50 to-blue-100 px-4">
-      <div className="w-full max-w-md bg-white rounded-2xl shadow-2xl p-10">
+    <div className="min-h-screen flex items-center justify-center bg-base-100 px-4">
+      <div className="w-full max-w-md bg-base-200 rounded-2xl shadow-2xl p-10">
         <h1 className="text-3xl font-bold text-blue-900 text-center mb-8">
           Welcome Back
         </h1>

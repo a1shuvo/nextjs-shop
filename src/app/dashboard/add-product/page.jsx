@@ -12,8 +12,8 @@ export default async function AddProductPage() {
   }
 
   return (
-    <div className="bg-gray-50 flex flex-col items-center justify-center">
-      <div className="bg-white shadow-xl rounded-2xl w-full max-w-2xl">
+    <div className="bg-base-100 flex flex-col items-center justify-center">
+      <div className="bg-base-100 shadow-xl rounded-2xl w-full max-w-2xl">
         <AddProductForm />
       </div>
     </div>

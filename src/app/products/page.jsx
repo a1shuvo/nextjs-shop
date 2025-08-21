@@ -9,7 +9,7 @@ export default async function ProductsPage() {
   const products = JSON.parse(data);
 
   return (
-    <div className="min-h-screen bg-gray-50 py-12">
+    <div className="min-h-screen bg-base-100 py-12">
       <h1 className="text-4xl font-bold text-center text-blue-900 mb-12">
         Products
       </h1>
@@ -18,7 +18,7 @@ export default async function ProductsPage() {
         {products.map((product) => (
           <div
             key={product.id}
-            className="card bg-white shadow-lg hover:shadow-2xl transition-shadow duration-300 rounded-2xl overflow-hidden flex flex-col"
+            className="card bg-base-100 shadow-lg hover:shadow-2xl transition-shadow duration-300 rounded-2xl overflow-hidden flex flex-col"
           >
             {product.image && (
               <figure className="overflow-hidden">

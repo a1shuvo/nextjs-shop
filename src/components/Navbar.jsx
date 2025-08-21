@@ -2,12 +2,13 @@
 
 import { signIn, signOut, useSession } from "next-auth/react";
 import Link from "next/link";
+import ThemeToggle from "./ThemeToggle";
 
 export default function Navbar() {
   const { data: session } = useSession();
 
   return (
-    <div className="sticky top-0 z-50 bg-white shadow-md">
+    <div className="sticky top-0 z-50 bg-base-100 shadow-md">
       <div className="navbar max-w-7xl mx-auto px-6">
         {/* Left: Logo */}
         <div className="navbar-start">
@@ -31,7 +32,10 @@ export default function Navbar() {
             </li>
             {session && (
               <li>
-                <Link href="/dashboard/add-product" className="hover:text-blue-600">
+                <Link
+                  href="/dashboard/add-product"
+                  className="hover:text-blue-600"
+                >
                   Add Product
                 </Link>
               </li>
@@ -41,6 +45,7 @@ export default function Navbar() {
 
         {/* Right: Auth / User Avatar */}
         <div className="navbar-end flex items-center gap-2">
+          <ThemeToggle />
           {session ? (
             <div className="dropdown dropdown-end">
               <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
@@ -50,7 +55,7 @@ export default function Navbar() {
               </label>
               <ul
                 tabIndex={0}
-                className="dropdown-content mt-3 p-2 shadow menu menu-compact bg-white rounded-box w-52"
+                className="dropdown-content mt-3 p-2 shadow menu menu-compact bg-base-100 rounded-box w-52"
               >
                 <li>
                   <button
@@ -91,7 +96,7 @@ export default function Navbar() {
             </label>
             <ul
               tabIndex={0}
-              className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-white rounded-box w-52"
+              className="menu menu-compact dropdown-content mt-3 p-2 shadow rounded-box w-52"
             >
               <li>
                 <Link href="/">Home</Link>

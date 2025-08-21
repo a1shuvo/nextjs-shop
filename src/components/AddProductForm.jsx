@@ -65,12 +65,12 @@ export default function AddProductForm() {
   };
 
   return (
-    <div className="min-h-screen flex flex-col items-center bg-gray-50 px-4 py-12 relative">
+    <div className="min-h-screen flex flex-col items-center bg-base-100 px-4 py-12 relative">
       <Toaster position="top-right" reverseOrder={false} />
 
       <form
         onSubmit={handleSubmit}
-        className="bg-white p-8 rounded-2xl shadow-xl w-full max-w-lg flex flex-col gap-5"
+        className="bg-base-100 p-8 rounded-2xl shadow-xl w-full max-w-lg flex flex-col gap-5"
       >
         <h2 className="text-2xl font-bold text-center text-blue-900 mb-4">
           Add New Product
