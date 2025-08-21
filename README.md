@@ -3,6 +3,8 @@
 A simple e-commerce shop built with **Next.js, NextAuth.js, DaisyUI, and TailwindCSS**.  
 This project demonstrates authentication, product management (via JSON file storage), theming (light/dark), and responsive UI.
 
+🔗 Live: [[Live Site URL](https://nextjs-shop-flax.vercel.app)]
+
 ---
 
 ## 🚀 Features
@@ -45,7 +47,7 @@ This project demonstrates authentication, product management (via JSON file stor
    ```bash
    npm run dev
    ```
-   App will be available at [Live Link](https://nextjs-shop-flax.vercel.app).
+   App will be available at [http://localhost:3000](http://localhost:3000).
 
 ---
 
