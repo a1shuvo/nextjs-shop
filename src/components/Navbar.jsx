@@ -2,26 +2,47 @@
 
 import { signIn, signOut, useSession } from "next-auth/react";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import ThemeToggle from "./ThemeToggle";
 
 export default function Navbar() {
   const { data: session } = useSession();
+  const pathname = usePathname();
 
   const navLinks = (
     <>
       <li>
-        <Link href="/" className="hover:text-primary">
+        <Link
+          href="/"
+          className={`px-3 py-1 rounded-md font-medium transition-colors ${
+            pathname === "/" ? "bg-primary text-white" : "hover:text-primary"
+          }`}
+        >
           Home
         </Link>
       </li>
       <li>
-        <Link href="/products" className="hover:text-primary">
+        <Link
+          href="/products"
+          className={`px-3 py-1 rounded-md font-medium transition-colors ${
+            pathname === "/products"
+              ? "bg-primary text-white"
+              : "hover:text-primary"
+          }`}
+        >
           Products
         </Link>
       </li>
       {session && (
         <li>
-          <Link href="/dashboard/add-product" className="hover:text-primary">
+          <Link
+            href="/dashboard/add-product"
+            className={`px-3 py-1 rounded-md font-medium transition-colors ${
+              pathname === "/dashboard/add-product"
+                ? "bg-primary text-white"
+                : "hover:text-primary"
+            }`}
+          >
             Add Product
           </Link>
         </li>
@@ -41,9 +62,7 @@ export default function Navbar() {
 
         {/* Center: Desktop Nav */}
         <div className="navbar-center hidden lg:flex">
-          <ul className="menu menu-horizontal gap-6 px-1 font-medium">
-            {navLinks}
-          </ul>
+          <ul className="menu menu-horizontal gap-4">{navLinks}</ul>
         </div>
 
         {/* Right: Auth / Theme */}
@@ -98,7 +117,7 @@ export default function Navbar() {
                 />
               </svg>
             </label>
-            <div
+            <ul
               tabIndex={0}
               className="menu dropdown-content mt-3 p-4 shadow bg-base-100 rounded-box w-fit right-0"
             >
@@ -107,20 +126,20 @@ export default function Navbar() {
                 {session ? (
                   <button
                     onClick={() => signOut()}
-                    className="text-red-500 hover:bg-red-100 rounded-lg"
+                    className="text-red-500 hover:bg-red-100 rounded-lg w-full"
                   >
                     Logout
                   </button>
                 ) : (
                   <button
                     onClick={() => signIn()}
-                    className="btn btn-sm btn-primary rounded-full"
+                    className="btn btn-sm btn-primary rounded-full w-full"
                   >
                     Login
                   </button>
                 )}
               </div>
-            </div>
+            </ul>
           </div>
         </div>
       </div>

@@ -38,7 +38,7 @@ export default function LoginPage() {
             />
           </svg>
 
-          <span className="text-base-100 text-sm">Sign in with Google</span>
+          <span className="text-white text-sm">Sign in with Google</span>
         </button>
 
         {/* <div className="flex items-center gap-3 my-4">
