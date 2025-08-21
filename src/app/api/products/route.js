@@ -3,7 +3,7 @@ import path from "path";
 
 export async function POST(req) {
   const body = await req.json();
-  const filePath = path.join(process.cwd(), "lib/products.json");
+  const filePath = path.join(process.cwd(), "src/lib/products.json");
 
   try {
     const data = await fs.readFile(filePath, "utf-8");
@@ -14,6 +14,7 @@ export async function POST(req) {
       name: body.name,
       description: body.description,
       price: body.price,
+      image: body.image || "",
     };
 
     products.push(newProduct);
@@ -21,6 +22,7 @@ export async function POST(req) {
 
     return new Response(JSON.stringify(newProduct), { status: 201 });
   } catch (err) {
+    console.error(err);
     return new Response(JSON.stringify({ error: "Failed to save product" }), {
       status: 500,
     });

@@ -1,69 +1,116 @@
 "use client";
 
-import { useState } from "react";
 import axios from "axios";
+import { useState } from "react";
 
 export default function AddProductForm() {
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
   const [price, setPrice] = useState("");
-  const [message, setMessage] = useState("");
+  const [image, setImage] = useState("");
+  const [loading, setLoading] = useState(false);
+  const [toast, setToast] = useState({ show: false, message: "", type: "" });
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setLoading(true);
     try {
       const res = await axios.post("/api/products", {
         name,
         description,
         price: parseFloat(price),
+        image,
       });
+
       if (res.status === 201) {
-        setMessage("Product added successfully!");
+        setToast({
+          show: true,
+          message: "Product added successfully!",
+          type: "success",
+        });
         setName("");
         setDescription("");
         setPrice("");
+        setImage("");
       }
     } catch (err) {
-      setMessage("Error adding product.");
+      setToast({
+        show: true,
+        message: "Error adding product.",
+        type: "error",
+      });
       console.error(err);
+    } finally {
+      setLoading(false);
+      setTimeout(() => setToast({ show: false, message: "", type: "" }), 3000);
     }
   };
 
   return (
-    <form
-      onSubmit={handleSubmit}
-      className="bg-white p-6 rounded-lg shadow-md w-full max-w-md flex flex-col gap-4"
-    >
-      <input
-        type="text"
-        placeholder="Product Name"
-        value={name}
-        onChange={(e) => setName(e.target.value)}
-        className="border px-3 py-2 rounded"
-        required
-      />
-      <textarea
-        placeholder="Description"
-        value={description}
-        onChange={(e) => setDescription(e.target.value)}
-        className="border px-3 py-2 rounded"
-        required
-      />
-      <input
-        type="number"
-        placeholder="Price"
-        value={price}
-        onChange={(e) => setPrice(e.target.value)}
-        className="border px-3 py-2 rounded"
-        required
-      />
-      <button
-        type="submit"
-        className="bg-blue-600 text-white px-4 py-2 rounded"
+    <div className="min-h-screen flex flex-col items-center justify-center bg-gray-50 px-4">
+      <form
+        onSubmit={handleSubmit}
+        className="bg-white p-8 rounded-2xl shadow-xl w-full max-w-lg flex flex-col gap-5"
       >
-        Add Product
-      </button>
-      {message && <p className="text-green-600 mt-2">{message}</p>}
-    </form>
+        <h2 className="text-2xl font-bold text-center text-blue-900 mb-4">
+          Add New Product
+        </h2>
+
+        <input
+          type="text"
+          placeholder="Product Name"
+          value={name}
+          onChange={(e) => setName(e.target.value)}
+          className="input input-bordered w-full rounded-lg"
+          required
+        />
+        <textarea
+          placeholder="Description"
+          value={description}
+          onChange={(e) => setDescription(e.target.value)}
+          className="textarea textarea-bordered w-full rounded-lg"
+          required
+        />
+        <input
+          type="number"
+          placeholder="Price"
+          value={price}
+          onChange={(e) => setPrice(e.target.value)}
+          className="input input-bordered w-full rounded-lg"
+          required
+        />
+        <input
+          type="text"
+          placeholder="Image URL"
+          value={image}
+          onChange={(e) => setImage(e.target.value)}
+          className="input input-bordered w-full rounded-lg"
+          required
+        />
+
+        <button
+          type="submit"
+          className={`btn btn-primary w-full rounded-full flex items-center justify-center gap-2 ${
+            loading ? "loading" : ""
+          }`}
+          disabled={loading}
+        >
+          {loading ? "Adding..." : "Add Product"}
+        </button>
+      </form>
+
+      {/* Toast */}
+      {toast.show && (
+        <div
+          className={`toast toast-top toast-end mt-6 ${
+            toast.type === "success" ? "toast-success" : "toast-error"
+          }`}
+        >
+          <div className="alert">
+            <span>{toast.message}</span>
+          </div>
+        </div>
+      )}
+    </div>
   );
 }

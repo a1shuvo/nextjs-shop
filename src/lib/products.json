@@ -1,30 +1,72 @@
 [
   {
     "id": 1,
-    "name": "Wireless Headphones",
+    "name": "Wireless Bluetooth Headphones",
+    "description": "High-quality over-ear headphones with noise cancellation and 20-hour battery life.",
     "price": 59.99,
-    "description": "High-quality wireless headphones with noise cancellation.",
-    "image": "/images/headphones.jpg"
+    "image": "https://img.freepik.com/free-photo/rendering-smart-home-device_23-2151039340.jpg"
   },
   {
     "id": 2,
-    "name": "Smart Watch",
-    "price": 129.99,
-    "description": "Track your fitness and notifications with this stylish smartwatch.",
-    "image": "/images/smartwatch.jpg"
+    "name": "Smart Fitness Watch",
+    "description": "Track your workouts, heart rate, sleep, and get smartphone notifications.",
+    "price": 79.99,
+    "image": "https://img.freepik.com/free-photo/futuristic-virtual-reality-headset-illuminates-dark-studio-shot-generated-by-ai_188544-13298.jpg"
   },
   {
     "id": 3,
-    "name": "Gaming Mouse",
-    "price": 39.99,
-    "description": "Ergonomic gaming mouse with customizable DPI settings.",
-    "image": "/images/mouse.jpg"
+    "name": "Portable Power Bank 10000mAh",
+    "description": "Compact and fast-charging power bank for phones and tablets on the go.",
+    "price": 29.99,
+    "image": "https://img.freepik.com/free-photo/rendering-smart-home-device_23-2151039381.jpg"
   },
   {
     "id": 4,
-    "name": "Bluetooth Speaker",
+    "name": "Wireless Mouse",
+    "description": "Ergonomic wireless mouse with adjustable DPI and long battery life.",
+    "price": 19.99,
+    "image": "https://img.freepik.com/free-photo/wireless-mouse-wheel-scrolling-data-input-tool-generated-by-ai_188544-27098.jpg"
+  },
+  {
+    "id": 5,
+    "name": "Mechanical Gaming Keyboard",
+    "description": "RGB backlit keyboard with tactile mechanical switches for gaming enthusiasts.",
+    "price": 89.99,
+    "image": "https://img.freepik.com/free-photo/ai-powered-device-concept_23-2151924154.jpg"
+  },
+  {
+    "id": 6,
+    "name": "HD Web Camera",
+    "description": "1080p USB webcam with built-in microphone, perfect for streaming and meetings.",
     "price": 49.99,
-    "description": "Portable Bluetooth speaker with excellent sound quality.",
-    "image": "/images/speaker.jpg"
+    "image": "https://img.freepik.com/free-photo/rendering-smart-home-device_23-2151039338.jpg"
+  },
+  {
+    "id": 7,
+    "name": "Portable Bluetooth Speaker",
+    "description": "Compact speaker with deep bass, water-resistant design, and 12-hour playtime.",
+    "price": 39.99,
+    "image": "https://img.freepik.com/free-photo/still-life-tech-device_23-2150722637.jpg"
+  },
+  {
+    "id": 8,
+    "name": "Laptop Stand Adjustable",
+    "description": "Aluminum stand for laptops up to 17 inches with ergonomic design and cooling vents.",
+    "price": 24.99,
+    "image": "https://static-01.daraz.com.bd/p/0a7514b2991a75206a27532451589486.jpg"
+  },
+  {
+    "id": 9,
+    "name": "Noise-Cancelling Earbuds",
+    "description": "Compact wireless earbuds with active noise cancellation and touch controls.",
+    "price": 69.99,
+    "image": "https://img.drz.lazcdn.com/static/bd/p/305cc6da26c20631096f38eea595b17e.jpg_720x720q80.jpg"
+  },
+  {
+    "id": 10,
+    "name": "Hello",
+    "description": "ssf",
+    "price": 10,
+    "image": "https://img.drz.lazcdn.com/static/bd/p/305cc6da26c20631096f38eea595b17e.jpg_720x720q80.jpg"
   }
 ]

@@ -1,7 +1,7 @@
-import { getServerSession } from "next-auth/next";
 import { authOptions } from "@/app/api/auth/[...nextauth]/route";
-import { redirect } from "next/navigation";
 import AddProductForm from "@/components/AddProductForm";
+import { getServerSession } from "next-auth/next";
+import { redirect } from "next/navigation";
 
 export default async function AddProductPage() {
   const session = await getServerSession(authOptions);
@@ -12,9 +12,10 @@ export default async function AddProductPage() {
   }
 
   return (
-    <div className="min-h-screen bg-gray-50 flex flex-col items-center py-12 px-6">
-      <h1 className="text-3xl font-bold mb-6">Add New Product</h1>
-      <AddProductForm />
+    <div className="bg-gray-50 flex flex-col items-center justify-center">
+      <div className="bg-white shadow-xl rounded-2xl w-full max-w-2xl">
+        <AddProductForm />
+      </div>
     </div>
   );
 }
