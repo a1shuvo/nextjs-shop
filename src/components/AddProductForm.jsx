@@ -2,6 +2,8 @@
 
 import axios from "axios";
 import { useState } from "react";
+import toast, { Toaster } from "react-hot-toast";
+import { AiOutlineCheckCircle, AiOutlineCloseCircle } from "react-icons/ai";
 
 export default function AddProductForm() {
   const [name, setName] = useState("");
@@ -9,11 +11,11 @@ export default function AddProductForm() {
   const [price, setPrice] = useState("");
   const [image, setImage] = useState("");
   const [loading, setLoading] = useState(false);
-  const [toast, setToast] = useState({ show: false, message: "", type: "" });
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
+
     try {
       const res = await axios.post("/api/products", {
         name,
@@ -23,31 +25,49 @@ export default function AddProductForm() {
       });
 
       if (res.status === 201) {
-        setToast({
-          show: true,
-          message: "Product added successfully!",
-          type: "success",
-        });
+        toast.custom(
+          (t) => (
+            <div
+              className={`${
+                t.visible ? "animate-enter" : "animate-leave"
+              } max-w-md w-full bg-green-500 text-white px-6 py-4 rounded-xl shadow-lg flex items-center gap-3`}
+            >
+              <AiOutlineCheckCircle className="w-6 h-6" />
+              <span>Product added successfully!</span>
+            </div>
+          ),
+          { duration: 3000 }
+        );
+
         setName("");
         setDescription("");
         setPrice("");
         setImage("");
       }
     } catch (err) {
-      setToast({
-        show: true,
-        message: "Error adding product.",
-        type: "error",
-      });
+      toast.custom(
+        (t) => (
+          <div
+            className={`${
+              t.visible ? "animate-enter" : "animate-leave"
+            } max-w-md w-full bg-red-500 text-white px-6 py-4 rounded-xl shadow-lg flex items-center gap-3`}
+          >
+            <AiOutlineCloseCircle className="w-6 h-6" />
+            <span>Error adding product.</span>
+          </div>
+        ),
+        { duration: 3000 }
+      );
       console.error(err);
     } finally {
       setLoading(false);
-      setTimeout(() => setToast({ show: false, message: "", type: "" }), 3000);
     }
   };
 
   return (
-    <div className="min-h-screen flex flex-col items-center justify-center bg-gray-50 px-4">
+    <div className="min-h-screen flex flex-col items-center bg-gray-50 px-4 py-12 relative">
+      <Toaster position="top-right" reverseOrder={false} />
+
       <form
         onSubmit={handleSubmit}
         className="bg-white p-8 rounded-2xl shadow-xl w-full max-w-lg flex flex-col gap-5"
@@ -90,27 +110,15 @@ export default function AddProductForm() {
 
         <button
           type="submit"
-          className={`btn btn-primary w-full rounded-full flex items-center justify-center gap-2 ${
-            loading ? "loading" : ""
-          }`}
+          className="btn btn-primary w-full rounded-full flex items-center justify-center gap-2"
           disabled={loading}
         >
+          {loading && (
+            <span className="loading loading-spinner loading-sm"></span>
+          )}
           {loading ? "Adding..." : "Add Product"}
         </button>
       </form>
-
-      {/* Toast */}
-      {toast.show && (
-        <div
-          className={`toast toast-top toast-end mt-6 ${
-            toast.type === "success" ? "toast-success" : "toast-error"
-          }`}
-        >
-          <div className="alert">
-            <span>{toast.message}</span>
-          </div>
-        </div>
-      )}
     </div>
   );
 }
